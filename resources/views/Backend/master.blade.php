@@ -353,13 +353,59 @@
                             <li>
                                 <a class="dropmenu" href="{{ url('/sub_categories') }}"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">Sub Category</span><span class="label label-important"> 2 </span></a>
                                 <ul>
-                                    <li><a class="submenu" href="{{ url('sub_categories/create') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> Add Category</span></a></li>
-                                    <li><a class="submenu" href="{{ url('/sub_categories') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> All Category</span></a></li>
+                                    <li><a class="submenu" href="{{ url('sub_categories/create') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> Add Sub Category</span></a></li>
+                                    <li><a class="submenu" href="{{ url('/sub_categories') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> All Sub Category</span></a></li>
 
                                 </ul>
+</li>
 
 
-						</li>
+<li>
+    <a class="dropmenu" href="{{ url('/brand') }}"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">Brand</span><span class="label label-important"> 2 </span></a>
+    <ul>
+        <li><a class="submenu" href="{{ url('brand/create') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> Add Brand</span></a></li>
+        <li><a class="submenu" href="{{ url('/brand') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> All Brand</span></a></li>
+
+    </ul>
+</li>
+
+
+<li>
+    <a class="dropmenu" href="{{ url('/units') }}"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">Unit</span><span class="label label-important"> 2 </span></a>
+    <ul>
+        <li><a class="submenu" href="{{ url('units/create') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> Add Unit</span></a></li>
+        <li><a class="submenu" href="{{ url('/units') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> All Unit</span></a></li>
+
+    </ul>
+</li>
+
+<li>
+    <a class="dropmenu" href="{{ url('/sizes') }}"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">Sizes</span><span class="label label-important"> 2 </span></a>
+    <ul>
+        <li><a class="submenu" href="{{ url('sizes/create') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> Add Size</span></a></li>
+        <li><a class="submenu" href="{{ url('/sizes') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> All Size</span></a></li>
+
+    </ul>
+</li>
+
+<li>
+    <a class="dropmenu" href="{{ url('/color') }}"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">Color</span><span class="label label-important"> 2 </span></a>
+    <ul>
+        <li><a class="submenu" href="{{ url('color/create') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> Add Color</span></a></li>
+        <li><a class="submenu" href="{{ url('/color') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> All Color</span></a></li>
+
+    </ul>
+</li>
+
+<li>
+    <a class="dropmenu" href="{{ url('/products') }}"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">Product</span><span class="label label-important"> 2 </span></a>
+    <ul>
+        <li><a class="submenu" href="{{ url('products/create') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> Add Product</span></a></li>
+        <li><a class="submenu" href="{{ url('/products') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> All Product</span></a></li>
+
+    </ul>
+</li>
+
 						<li><a href="form.html"><i class="icon-edit"></i><span class="hidden-tablet"> Forms</span></a></li>
 						<li><a href="chart.html"><i class="icon-list-alt"></i><span class="hidden-tablet"> Charts</span></a></li>
 						<li><a href="typography.html"><i class="icon-font"></i><span class="hidden-tablet"> Typography</span></a></li>

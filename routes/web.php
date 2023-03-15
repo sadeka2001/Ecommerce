@@ -6,6 +6,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\UnitsController;
+use App\Http\Controllers\SizesController;
+use App\Http\Controllers\ColorController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +39,27 @@ Route::get('/cat_status{category}',[CategoryController::class,'category_status']
 
 Route::resource('/sub_categories', SubCategoryController::class);
 Route::get('/subcat_status{subcategory}',[SubCategoryController::class,'category_status']);
+
+//Brand
+Route::resource('/brand', BrandController::class);
+Route::get('/brand_status{brand}',[BrandController::class,'brand_status']);
+
+//Unit
+
+Route::resource('/units', UnitsController::class);
+Route::get('/units_status{unit}',[UnitsController::class,'unit_status']);
+
+//sizes
+Route::resource('/sizes', SizesController::class);
+Route::get('/sizes_status{size}',[SizesController::class,'size_status']);
+
+//Color
+Route::resource('/color', ColorController::class);
+Route::get('/color_status{color}',[ColorController::class,'color_status']);
+
+//Products
+Route::resource('/products', ProductController::class);
+Route::get('/products_status{product}',[ProductController::class,'Product_status']);
 
 //Fronted
 Route::get('/',[HomeController::class,'index']);

@@ -1,4 +1,6 @@
+
 @extends('Backend.master')
+
 @section('admin_content')
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -39,26 +41,45 @@
                 <table class="table table-striped table-bordered bootstrap-datatable datatable">
                     <thead>
                         <tr>
-                            <th style="width:10%">Sub cat id</th>
-                            <th style="width:15%">Sub Category Name</th>
-                            <th style="width:15%">Category Name</th>
-                            <th style="width:30%">Description</th>
 
-                            <th style="width:15%">Status</th>
+                            <th style="width:5%">Code</th>
+                            <th style="width:10%">Product Name</th>
+                            <th style="width:20%">Description</th>
+                            <th style="width:5%">Category Name</th>
+                            <th style="width:5%">SubCategory Name</th>
+                            <th style="width:5%">Brand Name</th>
+
+                            <th style="width:5%">price</th>
+                            <th style="width:20%">Image</th>
+                            <th style="width:10%">Status</th>
                             <th style="width:15%">Actions</th>
                         </tr>
                     </thead>
 
-                    @foreach ($subcategory as $subcategory)
+                    @foreach ($products as $product)
+                      @php
+                         $product['images']=explode("|",$product->image);
+                      @endphp
                         <tbody>
                             <tr>
-                                <td>{{$subcategory->id }}</td>
-                                <td class="center"> {{ $subcategory->name }} </td>
-                                <td class="center"> {{ $subcategory->category->name }} </td>
-                                <td class="center">{{ $subcategory->description }}</td>
+                                <td>{{$product->product_code }}</td>
+                                <td class="center"> {{ $product->name }} </td>
+                                <td class="center">{{ $product->description }}</td>
+                                <td class="center">{{ $product->category->name }}</td>
+                                <td class="center">{{ $product->subcategory->name }}</td>
+                                <td class="center">{{ $product->brand->name }}</td>
+                                <td class="center">U+09F3{{ $product->price }}</td>
+                                <td>
+                                    @foreach ($product->image as $images)
+                                    <img src="{{ asset('uploads/images/' . $images->image) }}" height="50px" width="50px"
+                                    alt="img">
+                                    @endforeach
+
+
+                                </td>
 
                                 <td class="center">
-                                    @if ($subcategory->status == 1)
+                                    @if ($product->status == 1)
                                         <span class="label label-success">Active</span>
                                     @else
                                         <span class="label label-danger">Deactive</span>
@@ -71,13 +92,13 @@
 
                                     <div class="span2">
 
-                                        @if ($subcategory->status == 1)
-                                            <a href="{{ url('/subcat_status' . $subcategory->id) }}" class="btn btn-success">
+                                        @if ($product->status == 1)
+                                            <a href="{{ url('/products_status' . $product->id) }}" class="btn btn-success">
                                                 <i class="halflings-icon white thumbs-down"></i>
                                             </a>
                                     </div>
                                 @else
-                                    <a href="{{ url('/subcat_status' . $subcategory->id) }}" class="btn btn-danger">
+                                    <a href="{{ url('/products_status' . $product->id) }}" class="btn btn-danger">
                                         <i class="halflings-icon white thumbs-up"></i>
                                     </a>
             </div>
@@ -85,7 +106,7 @@
 
 
             <div class="span2">
-                <a href="{{ url('/sub_categories/' .$subcategory->id . '/edit') }}" class="btn btn-info">
+                <a href="{{ url('/products/' . $product->id . '/edit') }}" class="btn btn-info">
 
                     <i class="halflings-icon white edit"></i>
                 </a>
@@ -93,7 +114,7 @@
             </div>
 
             <div class="span2">
-                <form action="{{ route('sub_categories.destroy', $subcategory->id) }}" method="post">
+                <form action="{{ route('products.destroy', $product->id) }}" method="post">
 
                     @csrf
                     @method('DELETE')

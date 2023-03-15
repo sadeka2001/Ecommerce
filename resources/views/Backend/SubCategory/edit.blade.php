@@ -34,7 +34,7 @@
             </div>
 
             <div class="box-content">
-                <form class="form-horizontal" action="{{url('/sub_categories'.$categories->id) }}" method="post">
+                <form class="form-horizontal" action="{{url('/sub_categories/'.$subCategory->id) }}" method="post">
                    @csrf
                    @method('PUT')
 
@@ -42,7 +42,7 @@
                         <div class="control-group">
                             <label class="control-label" for="date01">Sub Category Name</label>
                             <div class="controls">
-                                <input type="text" class="input-xlarge" name="name" value="{{  $subcategory->name }}">
+                                <input type="text" class="input-xlarge" name="name" value="{{$subCategory->name }}">
                             </div>
                         </div>
 
@@ -52,18 +52,18 @@
                                 <select name="category" style="margin-left: 20px;">
                                 <option>select category</option>
 
-                                @foreach ($categories as $category)
+                             @foreach ($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
 
                                 @endforeach
-                            </select>
+                              </select>
                             </div>
 
-
+                    </div>
                         <div class="control-group hidden-phone">
                             <label class="control-label" for="textarea2">Description</label>
                             <div class="controls">
-                                <textarea class="cleditor" name="description" rows="3" required>{{  $subcategory->description }}</textarea>
+                                <textarea class="cleditor" name="description" rows="3" required>{{ $subCategory->description }}</textarea>
                             </div>
 
                         </div>

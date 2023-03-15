@@ -73,12 +73,15 @@ class SubCategoryController extends Controller
             return view('Backend.SubCategory.edit', compact('categories','subcategory'));
         }*/
 
+
+
         public function edit($id)
-    {
-        $categories = Category::find($id);
-        //$categories=Category::all();
-        return view('Backend.SubCategory.edit', compact('categories'));
-    }
+        {
+            $subCategory = Sub_Category::find($id);
+            $categories=Category::all();
+            return view('Backend.SubCategory.edit', compact('categories', 'subCategory'));
+        }
+
 
 
     /**
