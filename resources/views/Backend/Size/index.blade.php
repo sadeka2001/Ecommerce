@@ -53,9 +53,9 @@
                         <tr>
                             <td>{{$size->id }}</td>
                             <td>
-                                @foreach( (json_decode)$size->size as $sizes)
+                                @foreach(json_decode($size->size) as $sizes)
 
-                                    <ul class="span3">{{($sizes )}}</ul>
+                                    <ul class="span3">{{$sizes}}</ul>
 
                                 @endforeach
                             </td>
@@ -133,3 +133,18 @@
     </div>
     <!--/row-->
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

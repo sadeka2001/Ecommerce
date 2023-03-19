@@ -58,7 +58,7 @@
 
                     @foreach ($products as $product)
                       @php
-                         $product['images']=explode("|",$product->image);
+                         $product['image']=explode("|",$product->image);
                       @endphp
                         <tbody>
                             <tr>
@@ -68,10 +68,10 @@
                                 <td class="center">{{ $product->category->name }}</td>
                                 <td class="center">{{ $product->subcategory->name }}</td>
                                 <td class="center">{{ $product->brand->name }}</td>
-                                <td class="center">U+09F3{{ $product->price }}</td>
+                                <td class="center">&#2547;{{ $product->price }}</td>
                                 <td>
                                     @foreach ($product->image as $images)
-                                    <img src="{{ asset('uploads/images/' . $images->image) }}" height="50px" width="50px"
+                                    <img src="{{ asset('uploads/product/' . $images) }}" height="50px" width="50px"
                                     alt="img">
                                     @endforeach
 

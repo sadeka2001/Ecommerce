@@ -47,7 +47,6 @@ $message=Session::get('message');
                     </div>
                 </div>
 
-
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Add size</button>
                 </div>
@@ -61,3 +60,4 @@ $message=Session::get('message');
 
 
 @endsection
+

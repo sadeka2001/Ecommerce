@@ -21,9 +21,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products=Product::all();
-        return view('Backend.Products.index',compact('products'));
-
+        $products = Product::all();
+        return view('Backend.Products.index', compact('products'));
     }
 
     /**
@@ -31,13 +30,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories=Category::all();
-        $subcategories=Sub_Category::all();
-        $brands=Brand::all();
-        $units=Units::all();
-        $sizes=Sizes::all();
-        $colors=Color::all();
-        return view('Backend.Products.create',compact('categories','subcategories','brands','units','sizes','colors'));
+        $categories = Category::all();
+        $subcategories = Sub_Category::all();
+        $brands = Brand::all();
+        $units = Units::all();
+        $sizes = Sizes::all();
+        $colors = Color::all();
+        return view('Backend.Products.create', compact('categories', 'subcategories', 'brands', 'units', 'sizes', 'colors'));
     }
 
     /**
@@ -51,38 +50,38 @@ class ProductController extends Controller
         $product->brand_id = $request->brand;
         $product->unit_id = $request->unit;
         $product->size_id = $request->size;
-        $product->color_id=$request->color;
+        $product->color_id = $request->color;
         $product->name = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
         $product->product_code = $request->product_code;
 
-        if($files=$request->file('file')){
+
+
         $images = array();
-        $i=0;
-        foreach($files as $file){
+        if ($files = $request->file('file')) {
+            $i = 0;
+            foreach ($files as $file) {
+                $name = $file->getClientOriginalName();
+                $fileNameExtract = explode('.', $name);
+                $fileName = $fileNameExtract[0];
+                $fileName .= time();
+                $fileName .= $i;
+                $fileName .= '.';
+                $fileName .= $fileNameExtract[1];
 
-        $name=$file->getClientOriginialName();
-        $fileNameExtract=explode('.',$name);
-        $fileName=$fileNameExtract[0];
-        $fileName.=time();
-        $fileName.=$i;
-        $fileName.='.';
-        $fileName=$fileNameExtract[1];
-        $file->move('image',$fileName);
-        $images[]=$fileName;
-        $i++;
-      }
-        $product['images']=implode("|",$images);
-        $product ->save();
-        return redirect()->back()->with('message', 'Product Added Successfully');
+                $file->move('uploads/product', $fileName);
+                $images[] = $fileName;
+                $i++;
+            }
+            $product['image'] = implode("|", $images);
 
+            $product->save();
+            return redirect('/products')->with('message', 'New Products added Succesfully!');
+        } else {
+            echo "error";
+        }
     }
-
-   else{
-    echo "No files";
-     }
- }
     /**
      * Display the specified resource.
      */
@@ -105,59 +104,58 @@ class ProductController extends Controller
     public function edit(string $id)
     {
         $product = Product::find($id);
-        $categories=Category::all();
-        $subcategories=Sub_Category::all();
-        $brands=Brand::all();
-        $units=Units::all();
-        $sizes=Sizes::all();
-        $colors=Color::all();
-        return view('Backend.Products.edit',compact('product','categories','subcategories','brands','units','sizes','colors'));
-
+        $categories = Category::all();
+        $subcategories = Sub_Category::all();
+        $brands = Brand::all();
+        $units = Units::all();
+        $sizes = Sizes::all();
+        $colors = Color::all();
+        return view('Backend.Products.edit', compact('product', 'categories', 'subcategories', 'brands', 'units', 'sizes', 'colors'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request ,$id)
     {
-        $product = new Product();
+        $product= Product::find($id);
         $product->cat_id = $request->category;
         $product->subcat_id = $request->subcategory;
         $product->brand_id = $request->brand;
         $product->unit_id = $request->unit;
         $product->size_id = $request->size;
-        $product->color_id=$request->color;
+        $product->color_id = $request->color;
         $product->name = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
         $product->product_code = $request->product_code;
 
-        if($files=$request->file('file')){
+
         $images = array();
-        $i=0;
-        foreach($files as $file){
+        if ($files = $request->file('file')) {
+            $i = 0;
+            foreach ($files as $file) {
+                $name = $file->getClientOriginalName();
+                $fileNameExtract = explode('.', $name);
+                $fileName = $fileNameExtract[0];
+                $fileName .= time();
+                $fileName .= $i;
+                $fileName .= '.';
+                $fileName .= $fileNameExtract[1];
 
-        $name=$file->getClientOriginialName();
-        $fileNameExtract=explode('.',$name);
-        $fileName=$fileNameExtract[0];
-        $fileName.=time();
-        $fileName.=$i;
-        $fileName.='.';
-        $fileName=$fileNameExtract[1];
-        $file->move('image',$fileName);
-        $images[]=$fileName;
-        $i++;
-      }
-        $product['images']=implode("|",$images);
-        $product ->save();
-        return redirect()->back()->with('message', 'Product Added Successfully');
+                $file->move('uploads/product', $fileName);
+                $images[] = $fileName;
+                $i++;
+            }
+            $product['image'] = implode("|", $images);
+            $product->update();
+            return redirect('/products')->with('message', 'New Products added Succesfully!');
 
-    }
-
-   else{
-    echo "No files";
-     }
-    }
+        } else {
+            echo "error";
+        }
+    
+}
 
     /**
      * Remove the specified resource from storage.
@@ -167,7 +165,7 @@ class ProductController extends Controller
         $delete = Product::find($id);
 
         $delete->delete();
-        if($delete)
-        return redirect('/products')->with('message', 'Delete Product Successfully');
+        if ($delete)
+            return redirect('/products')->with('message', 'Delete Product Successfully');
     }
 }

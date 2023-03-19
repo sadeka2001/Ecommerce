@@ -16,7 +16,7 @@ class SizesController extends Controller
     {
 
         $sizes = Sizes::all();
-        echo $sizes;
+
         return view('Backend.Size.index', compact('sizes'));
     }
 
@@ -35,8 +35,8 @@ class SizesController extends Controller
     {
         $sizes=explode(',',$request->size);
         $size = new Sizes();
-        $size->size = json_encode($sizes);
-        $size ->save();
+        $size->size=json_encode($sizes);
+        $size->save();
         return redirect()->back()->with('message', ' Size Added Successfully');
     }
 
@@ -70,12 +70,13 @@ class SizesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $size=explode(',',$request->size);
+
+        $sizes=explode(',',$request->size);
         $size =Sizes::find($id);
-        $size->size = json_encode($size);
-        $size->save();
-        if ($size)
-            return redirect('/sizes')->with('message', 'color Updated successfully');
+        $update=$size->update(['size'=>json_encode($sizes)]);
+     //   $update->save();
+        if($update)
+            return redirect('/sizes')->with('message', 'sizes Updated successfully');
     }
 
     /**

@@ -36,7 +36,7 @@ $message=Session::get('message');
     </div>
 
     <div class="box-content">
-        <form class="form-horizontal" action="{{url('/products/' .$product->$id)}}" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal" action="{{url('/products/' .$product->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <fieldset>
@@ -63,7 +63,7 @@ $message=Session::get('message');
                         <option>select category</option>
 
                         @foreach ($categories as $category)
-                            <option value="{{$category->id}}">{{implode(json_decode(',',$category->name))}}</option>
+                            <option value="{{$category->id}}">{{$category->name}}</option>
 
                         @endforeach
                     </select>
@@ -78,7 +78,7 @@ $message=Session::get('message');
                         <option>select sub category</option>
 
                         @foreach ($subcategories as $subcategory)
-                            <option value="{{$subcategory->id}}">{{implode(json_decode(',',$subcategory->name))}}</option>
+                            <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
 
                         @endforeach
                     </select>
@@ -92,7 +92,7 @@ $message=Session::get('message');
                         <option>select brand</option>
 
                         @foreach ($brands as $brand)
-                            <option value="{{$brand->id}}">{{implode(json_decode(',',$brand->name))}}</option>
+                            <option value="{{$brand->id}}">{{$brand->name}}</option>
 
                         @endforeach
                     </select>
@@ -106,7 +106,7 @@ $message=Session::get('message');
                         <option>select unit</option>
 
                         @foreach ($units as $unit)
-                            <option value="{{$unit->id}}">{{implode(json_decode(',',$unit->name))}}</option>
+                            <option value="{{$unit->id}}">{{$unit->name}}</option>
 
                         @endforeach
                     </select>
@@ -120,7 +120,7 @@ $message=Session::get('message');
                         <option>select size</option>
 
                         @foreach ($sizes as $size)
-                            <option value="{{$size->id}}">{{implode(json_decode(',',$size->size))}}</option>
+                            <option value="{{$size->id}}">{{implode(',',json_decode($size->size))}}</option>
 
                         @endforeach
                     </select>
@@ -134,7 +134,7 @@ $message=Session::get('message');
                         <option>select color</option>
 
                         @foreach ($colors as $color)
-                            <option value="{{$color->id}}">{{implode(json_decode(',',$color->color))}}</option>
+                            <option value="{{$color->id}}">{{implode(',',json_decode($color->color))}}</option>
 
                         @endforeach
                     </select>
@@ -161,7 +161,7 @@ $message=Session::get('message');
                 <div class="control-group">
                     <label class="control-label">File Upload</label>
                     <div class="controls">
-                        <input type="file" name="file[]" multiple required>
+                        <input type="file" value="" name="file[]" multiple required>
                     </div>
                 </div>
 
