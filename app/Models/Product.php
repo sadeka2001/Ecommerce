@@ -29,4 +29,19 @@ public function Category(){
      public function Color(){
         return  $this->belongsTo(Color::class,'color_id');
      }
+
+     public static function catProductCount($cat_id){
+        $catCount=Product::where('status',1)->where('cat_id',$cat_id)->count();
+        return $catCount;
+     }
+
+     public static function SubCatProductCount($subcat_id){
+        $subCatCount=Product::where('status',1)->where('subcat_id',$subcat_id)->count();
+        return $subCatCount;
+     }
+
+     public static function brandProductCount($brand_id){
+        $brandCount=Product::where('status',1)->where('brand_id',$brand_id)->count();
+        return $brandCount;
+     }
 }

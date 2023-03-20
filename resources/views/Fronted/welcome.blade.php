@@ -45,7 +45,7 @@
                             <ul class="section-tab-nav tab-nav">
                                 {{-- <li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li> --}}
                                 @foreach ($categories as $category)
-                                    <li class="active"><a data-toggle="tab" href="#tab1">{{ $category->name }}</a></li>
+                                    <li class="active"><a  href="{{ url('/product_by_cat'.$category->id)}}">{{ $category->name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -80,7 +80,7 @@
                                                 <p class="product-category"><a href="{{ url('/view_details'.$product->id) }}">{{ $product->category->name }}</a></p>
                                                 <h3 class="product-name"><a href="{{ url('/view_details'.$product->id) }}">{{ $product->name }}</a></h3>
                                                 <h4 class="product-price"><a href="{{ url('/view_details'.$product->id) }}">&#2547;{{ $product->price }} <del
-                                                        class="product-old-price">$990.00</del></a></h4>
+                                                        class="product-old-price">&#2547;{{ $product->price }}</del></a></h4>
                                                 <div class="product-rating">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -181,7 +181,7 @@
                             <ul class="section-tab-nav tab-nav">
                                 {{-- <li class="active"><a data-toggle="tab" href="#tab2">Laptops</a></li> --}}
                                 @foreach ($categories as $category)
-                                    <li class="active"><a data-toggle="tab" href="#tab2">{{ $category->name }}</a></li>
+                                    <li class="active"><a href="{{ url('/product_by_cat'.$category->id)}}">{{ $category->name }}</a></li>
                                 @endforeach
 
 

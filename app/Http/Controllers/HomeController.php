@@ -41,4 +41,33 @@ class HomeController extends Controller
 
         return view('Fronted.Pages.view_details', compact('categories', 'subcategories', 'brands', 'units', 'product','sizes', 'colors','related_products'));
    }
+
+   public function product_by_cat($id){
+
+    $categories = Category::all();
+    $subcategories = Sub_Category::all();
+    $brands = Brand::all();
+    $products = Product::where('status',1)->where('cat_id',$id)->limit(12)->get();
+    return view('Fronted.Pages.product_by_cat', compact('categories', 'subcategories', 'brands', 'products'));
+
+   }
+
+   public function product_by_subcat($id){
+
+    $categories = Category::all();
+    $subcategories = Sub_Category::all();
+    $brands = Brand::all();
+    $products = Product::where('status',1)->where('subcat_id',$id)->limit(12)->get();
+    return view('Fronted.Pages.product_subcat', compact('categories', 'subcategories', 'brands', 'products'));
+
+   }
+ public function search(Request $request){
+   $products=Product::orderBy('id','desc')->where('name','LIKE','%'.$request->product.'%');
+        if($request->category != "ALL") $products->where('cat_id',$request->category);
+        $products= $products->get();
+        $categories= Category::all();
+        $subcategories= Sub_Category::all();
+        $brands= Brand::all();
+        return view('Fronted.Pages.product_subcat',compact('categories','subcategories','brands','products'));
+}
 }

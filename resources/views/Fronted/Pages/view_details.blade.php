@@ -26,10 +26,6 @@
                     @endforeach
                 </div>
             </div>
-
-            <!-- /Product main img -->
-
-            <!-- Product thumb imgs -->
             <div class="col-md-2  col-md-pull-5">
                 <div id="product-imgs">
                     @foreach ($product->image as $image)
