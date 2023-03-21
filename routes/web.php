@@ -11,7 +11,7 @@ use App\Http\Controllers\UnitsController;
 use App\Http\Controllers\SizesController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\SslCommerzPaymentController;
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +68,7 @@ Route::get('/',[HomeController::class,'index']);
 Route::get('/view_details{id}',[HomeController::class,'view_details']);
 Route::get('/product_by_cat{id}',[HomeController::class,'product_by_cat']);
 Route::get('/product_by_subcat{id}',[HomeController::class,'product_by_subcat']);
+Route::get('/product_by_brand{id}',[HomeController::class,'product_by_brand']);
 Route::get('/search',[HomeController::class,'search']);
 
 
@@ -84,3 +85,5 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 //SslCommerzPayment
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//Add-Card
+Route::post('/add_cart',[CartController::class,'add_to_card']);

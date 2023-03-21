@@ -69,7 +69,11 @@
                                     <input type="checkbox" id="brand-1">
                                     <label for="brand-1">
                                         <span></span>
-                                        {{ $brand->name }}
+
+                                     <li>
+                                            <a
+                                                href="{{ url('/product_by_brand' .$brand->id) }}">{{ $brand->name }}</a>
+                                        </li>
                                         <small>({{ $brandCount }})</small>
                                     </label>
                                 </div>

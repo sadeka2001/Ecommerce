@@ -12,10 +12,10 @@
                 <div id="aside" class="col-md-3">
                     <!-- aside Widget -->
                     <div class="aside">
-                        <h3 class="aside-title">Categories</h3>
-                        @foreach ($categories as $category)
+                        <h3 class="aside-title">SubCategories</h3>
+                        @foreach ($subcategories as $subcategory)
                             @php
-                                $catCount = App\Models\Product::catProductCount($category->id);
+                                $subCatCount = App\Models\Product::SubCatProductCount($subcategory->id);
                             @endphp
                             <div class="checkbox-filter">
 
@@ -24,11 +24,12 @@
                                     <label for="category-1">
                                         <span></span>
                                         <li>
-                                            <a href="{{ url('/product_by_cat' . $category->id) }}">{{ $category->name }}</a>
+                                            <a
+                                                href="{{ url('/product_by_subcat' . $subcategory->id) }}">{{ $subcategory->name }}</a>
                                         </li>
 
 
-                                        <small>({{ $catCount }})</small>
+                                        <small>({{ $subCatCount }})</small>
                                     </label>
                                 </div>
                             </div>
@@ -68,10 +69,12 @@
                                     <input type="checkbox" id="brand-1">
                                     <label for="brand-1">
                                         <span></span>
+
                                         <li>
                                             <a
                                                 href="{{ url('/product_by_brand' .$brand->id) }}">{{ $brand->name }}</a>
                                         </li>
+
                                         <small>({{ $brandCount }})</small>
                                     </label>
                                 </div>
@@ -155,7 +158,8 @@
                                                 href="{{ url('/view_details' . $product->id) }}">{{ $product->category->name }}</a>
                                         </p>
                                         <h3 class="product-name"><a
-                                                href="{{ url('/view_details' . $product->id) }}">{{ $product->name }}</a></h3>
+                                                href="{{ url('/view_details' . $product->id) }}">{{ $product->name }}</a>
+                                        </h3>
                                         <h4 class="product-price"><a
                                                 href="{{ url('/view_details' . $product->id) }}">&#2547;{{ $product->price }}
                                                 <del class="product-old-price">&#2547;{{ $product->price }}</del></a></h4>

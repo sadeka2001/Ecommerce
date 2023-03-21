@@ -61,6 +61,18 @@ class HomeController extends Controller
     return view('Fronted.Pages.product_subcat', compact('categories', 'subcategories', 'brands', 'products'));
 
    }
+
+
+   public function product_by_brand($id){
+
+    $categories = Category::all();
+    $subcategories = Sub_Category::all();
+    $brands = Brand::all();
+    $products = Product::where('status',1)->where('brand_id',$id)->limit(12)->get();
+    return view('Fronted.Pages.product_by_brand', compact('categories', 'subcategories', 'brands', 'products'));
+
+   }
+
  public function search(Request $request){
    $products=Product::orderBy('id','desc')->where('name','LIKE','%'.$request->product.'%');
         if($request->category != "ALL") $products->where('cat_id',$request->category);

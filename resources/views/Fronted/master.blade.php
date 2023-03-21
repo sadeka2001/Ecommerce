@@ -35,17 +35,7 @@
 		<![endif]-->
 
     </head>
-    <script>
-        (function (window, document) {
-            var loader = function () {
-                var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
-                script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
-                tag.parentNode.insertBefore(script, tag);
-            };
 
-            window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
-        })(window, document);
-    </script>
 
 	<body>
 
@@ -74,6 +64,18 @@
 		<script src="{{ asset('js/nouislider.min.js') }}"></script>
 		<script src="{{ asset('js/jquery.zoom.min.js') }}"></script>
 		<script src="{{ asset('js/main.js') }}"></script>
+
+        <script>
+            (function (window, document) {
+                var loader = function () {
+                    var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+                    script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
+                    tag.parentNode.insertBefore(script, tag);
+                };
+
+                window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+            })(window, document);
+        </script>
 
 	</body>
 </html>
