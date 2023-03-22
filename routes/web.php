@@ -86,4 +86,4 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 //SslCommerzPayment
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //Add-Card
-Route::post('/add_cart',[CartController::class,'add_to_card']);
+Route::get('/add_cart',[CartController::class,'add_to_card']);

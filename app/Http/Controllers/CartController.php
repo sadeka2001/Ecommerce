@@ -14,14 +14,14 @@ class CartController extends Controller
         $quantity = $request->quantity;
         $id = $request->id;
         $product = Product::where('id', $id)->first();
-        $data['quantity'] = $quantity;
+        $data['qty'] = $quantity;
         $data['id'] = $product->id;
         $data['name'] = $product->name;
         $data['price'] = $product->price;
         $data['attribute'] =[$product->image];
 
         \Cart::add($data);
-        CardArray();
+       CardArray();
         return redirect()->back();
     }
 }
