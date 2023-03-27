@@ -1,8 +1,7 @@
 <?php
 
-use cart;
 function CardArray(){
-    $cartCollection=\Cart::getContent();
+    $cartCollection=\Cart::Content();
     return  $cartCollection->toArray();
 }
 
