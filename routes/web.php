@@ -13,6 +13,8 @@ use App\Http\Controllers\ColorController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,4 +89,12 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //Add-Card
 Route::post('/add_cart',[CartController::class,'add_to_card']);
-Route::get('/show_cart',[CartController::class,'show_cart']);
+
+//Route::get('/show_cart',[CartController::class,'show_cart']);
+//Checkout
+Route::get('/checkout',[CheckoutController::class,'index']);
+Route::get('/login_check',[CheckoutController::class,'login_check']);
+//customer
+Route::post('/customer_login',[CustomerController::class,'login']);
+Route::post('/customer_register',[CustomerController::class,'registration']);
+Route::get('/customer_logout',[CustomerController::class,'logout']);
