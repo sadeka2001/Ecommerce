@@ -89,6 +89,7 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //Add-Card
 Route::post('/add_cart',[CartController::class,'add_to_card']);
+Route::get('/delete_cart/{id}',[CartController::class,'delete_cart']);
 
 //Route::get('/show_cart',[CartController::class,'show_cart']);
 //Checkout
@@ -98,3 +99,5 @@ Route::get('/login_check',[CheckoutController::class,'login_check']);
 Route::post('/customer_login',[CustomerController::class,'login']);
 Route::post('/customer_register',[CustomerController::class,'registration']);
 Route::get('/customer_logout',[CustomerController::class,'logout']);
+
+

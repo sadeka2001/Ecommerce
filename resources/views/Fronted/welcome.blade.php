@@ -100,7 +100,7 @@
                                             <form action="{{url('/add_cart')}}" method="POST">
                                                 @csrf
                                             <div class="add-to-cart">
-                                                <input type="hidden" name="qty" value="1">
+                                                <input type="hidden" name="quantity" value="1">
                                                 <input type="hidden" name="id" value="{{ $product->id}}">
                                                 <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
                                                     cart</button>

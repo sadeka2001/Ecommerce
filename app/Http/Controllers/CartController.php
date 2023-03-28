@@ -14,16 +14,25 @@ class CartController extends Controller
     {
         $quantity = $request->quantity;
         $id = $request->id;
-        $product = Product::where('id', $id)->first();
-        $product_qty = $quantity;
-        $product_id = $product->id;
-        $product_name = $product->name;
-        $product_price = $product->price;
-        $product_image =[$product->image];
+        $product= Product::where('id', $id)->first();
+        $data['qty'] = $quantity;
+        $data['id'] = $product->id;
+        $data['name'] = $product->name;
+        $data ['price']= $product->price;
+        $data ['attributes']=[$product->image];
 
-        Cart::add($product_id, $product_name, $product_qty, $product_price);
+        Cart::add($data);
         // session()->flash('success_message', 'Item added in cart');
         cardArray();
         return redirect()->back();
     }
+    public function delete_cart($id){
+        $cart = Cart::content()->where('rowId',$id);
+        if($cart->isNotEmpty()){
+        Cart::remove( $id);
+        return redirect()->back();
+
+
+    }
+}
 }

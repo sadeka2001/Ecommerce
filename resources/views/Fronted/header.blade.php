@@ -94,8 +94,13 @@
                                  <div class="cart-list">
 
                                      @foreach ($cart_array as $add_cart)
+
+                                     {{--@php
+                                     $product['image'] = explode('|', $product->image);
+                                     $images = $product->image[0];
+                                 @endphp --}}
                                          {{-- @php
-                                        $images = $add_cart['attribute'][0];
+                                        $images = $add_cart['attributes'][0];
                                         $images = explode('|', $images);
                                         $images = $images[0];
                                     @endphp --}}
@@ -107,10 +112,10 @@
                                                  <h3 class="product-name"><a href="#">{{ $add_cart['name'] }}</a>
                                                  </h3>
                                                  <h4 class="product-price"><span
-                                                         class="qty">{{ $add_cart['qty'] }}</span>&#2547;{{ $add_cart['price'] }}
+                                                         class="qty">{{ $add_cart['qty'] }}x</span>&#2547;{{ $add_cart['price'] }}
                                                  </h4>
                                              </div>
-                                             <button class="delete"><i class="fa fa-close"></i></button>
+                                             <a class="delete" href="{{ url('/delete_cart/'.$add_cart['rowId'])}}"><i class="fa fa-close"></i></a>
                                          </div>
                                      @endforeach
 
