@@ -19,7 +19,7 @@ class CartController extends Controller
         $data['id'] = $product->id;
         $data['name'] = $product->name;
         $data ['price']= $product->price;
-        $data ['attributes']=[$product->image];
+        // $data ['image']=[$product->image];
 
         Cart::add($data);
         // session()->flash('success_message', 'Item added in cart');

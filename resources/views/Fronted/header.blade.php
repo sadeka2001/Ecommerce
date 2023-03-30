@@ -37,7 +37,7 @@
                  <div class="col-md-3">
                      <div class="header-logo">
                          <a href="{{ url('/') }}" class="logo">
-                             <img src="./img/logo.png" alt="">
+                             <img src="./img/logo.png " alt="">
                          </a>
                      </div>
                  </div>
@@ -94,20 +94,19 @@
                                  <div class="cart-list">
 
                                      @foreach ($cart_array as $add_cart)
-
-                                     {{--@php
+                                         {{-- @php
                                      $product['image'] = explode('|', $product->image);
                                      $images = $product->image[0];
                                  @endphp --}}
                                          {{-- @php
-                                        $images = $add_cart['attributes'][0];
-                                        $images = explode('|', $images);
-                                        $images = $images[0];
-                                    @endphp --}}
+                                             $images = $add_cart['image'][0];
+                                             $images = explode('|', $images);
+                                             $images = $images[0];
+                                         @endphp --}}
                                          <div class="product-widget">
-                                             <div class="product-img">
+                                             {{-- <div class="product-img">
                                                  <img src="{{ asset('uploads/product/' . $images) }}" alt="">
-                                             </div>
+                                             </div> --}}
                                              <div class="product-body">
                                                  <h3 class="product-name"><a href="#">{{ $add_cart['name'] }}</a>
                                                  </h3>
@@ -115,7 +114,8 @@
                                                          class="qty">{{ $add_cart['qty'] }}x</span>&#2547;{{ $add_cart['price'] }}
                                                  </h4>
                                              </div>
-                                             <a class="delete" href="{{ url('/delete_cart/'.$add_cart['rowId'])}}"><i class="fa fa-close"></i></a>
+                                             <a class="delete" href="{{ url('/delete_cart/' . $add_cart['rowId']) }}"><i
+                                                     class="fa fa-close"></i></a>
                                          </div>
                                      @endforeach
 
@@ -130,12 +130,13 @@
                                      @endphp
 
                                      @if ($customer_id != null)
-                                    <a style="width:100%; background-color:#D10024;" href="{{ url('/checkout') }}">Checkout <i class="fa fa-arrow-circle-right"></i></a>
-
-                                    @else
-                                         <a style="width:100%; background-color:#D10024;" href="{{ url('/login_check') }}">Checkout <i
+                                         <a style="width:100%; background-color:#D10024;"
+                                             href="{{ url('/checkout') }}">Checkout <i
                                                  class="fa fa-arrow-circle-right"></i></a>
-
+                                     @else
+                                         <a style="width:100%; background-color:#D10024;"
+                                             href="{{ url('/login_check') }}">Checkout <i
+                                                 class="fa fa-arrow-circle-right"></i></a>
                                      @endif
 
 
